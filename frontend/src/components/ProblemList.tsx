@@ -1,6 +1,6 @@
 // see https://erdos.sdslabs.co/problems specifically the list of problems
 
-import { Tag, TagContainer } from "./Tag";
+import { TagContainer } from "./Tag";
 
 interface ProblemType {
   id: string;
@@ -13,7 +13,7 @@ export const ProblemList = ({
 }: {
   problemList: ProblemType[];
 }) => {
-  const tagJSX = <div></div>;
+
   return (
     // The first div sould probably be a reusable component for layouting
     <div className="my-8">
@@ -29,15 +29,22 @@ export const ProblemList = ({
 
         {/* Rows */}
         {problemList.map((item) => (
-          <div key={item.id} className="flex justify-between items-center mb-4">
-            <div className="flex gap-8 w-1/3">
+          // ROW
+          <div
+            key={item.id}
+            className="flex justify-between items-center mb-4 bg-white p-4 shadow-sm rounded-md"
+          >
+            <div className="flex gap-16 w-1/3">
               <div>{item.id}</div>
               <div>
                 <div className="text-xl mb-2">{item.problemName}</div>
                 <TagContainer tags={item.tags} />
               </div>
             </div>
-            <div className="w-1/3 text-lg">{"Anirudh"}</div>
+            <div className="w-1/3 text-lg">
+              <span className="text-gray-500">Last submission: </span>{" "}
+              {"Anirudh"}
+            </div>
           </div>
         ))}
       </div>
